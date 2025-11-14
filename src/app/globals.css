@@ -53,3 +53,46 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 /*  */
+
+/* Header nav link hover effect */
+.link {
+   display: inline-flex;
+   align-items: center;
+   text-decoration: none;
+   /* Keep hover area larger than the sliding text to avoid pointer leaving */
+   height: 1.5em;
+}
+.mask {
+   display: inline-block;
+   position: relative;
+   padding: 0;
+   height: 1em; /* match text height */
+   overflow: hidden;
+}
+.link-container {
+   display: block;
+   transition: transform 0.4s ease;
+   will-change: transform;
+}
+.title {
+   display: block;
+   font-size: inherit;
+   line-height: 1;
+   transition: transform 0.4s ease;
+}
+.link-title1 {
+   transform-origin: right center;
+}
+.link-title2 {
+   transform-origin: left center;
+   transform: rotate(20deg);
+}
+.link:hover .link-container {
+   transform: translateY(-1em);
+}
+.link:hover .link-title1 {
+   transform: rotate(20deg);
+}
+.link:hover .link-title2 {
+   transform: rotate(0);
+}

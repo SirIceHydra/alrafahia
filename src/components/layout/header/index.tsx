@@ -7,6 +7,7 @@ import { searchIcon, hamburgerMenuIcon } from "@/public/img";
 // COMPONENT
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Basket from "./Basket";
 import TopNavbar from "./TopNavbar";
 import SearchInput from "./SearchInput";
@@ -17,6 +18,7 @@ const Header: FC = (): JSX.Element => {
    const [closeTopNavbar, setCloseTopNavbar] = useState<boolean>(false);
    const [isMobileNavMenuClose, setIsMobileNavMenuClose] = useState<boolean>(true);
    const [isShowSearchInput, setIsShowSearchInput] = useState<boolean>(false);
+   const pathname = usePathname();
 
    // onClick
    const closeTopNavbarHandler = () => {
@@ -65,9 +67,14 @@ const Header: FC = (): JSX.Element => {
                         <li key={label}>
                            <Link
                               href={href}
-                              className={`${href === "/products" ? "animate-pulse font-bold text-tertiary" : "font-medium text-primary"} transition-colors hover:text-support`}
+                              className={`font-medium text-p-lg ${pathname === href ? "text-support" : "text-primary"} link`}
                            >
-                              {label}
+                              <span className="mask">
+                                 <div className="link-container">
+                                    <span className="link-title1 title">{label}</span>
+                                    <span className="link-title2 title">{label}</span>
+                                 </div>
+                              </span>
                            </Link>
                         </li>
                      ))}

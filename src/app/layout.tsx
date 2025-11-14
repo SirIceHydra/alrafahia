@@ -6,11 +6,13 @@ import { staticPageMetadata } from "@/SEO";
 // FONT and STYLE
 import { integralCFFont, satoshiFont, lexendZettaFont } from "@/public/font";
 import "swiper/css";
+import "swiper/css/pagination";
 import "./globals.css";
 // Provider
 import Providers from "@/providers";
 // COMPONENT
 import { Header, Footer, PageLoadingProgressBar, ToastContainer } from "@/components";
+import DevSWUnregister from "@/components/DevSWUnregister";
 
 export const metadata: Metadata = {
    manifest: "/manifest.json",
@@ -24,6 +26,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }): JSX.Element => {
    return (
       <html lang="en">
          <body className={`${satoshiFont.variable} ${integralCFFont.variable} ${lexendZettaFont.variable} relative overflow-x-hidden font-satoshi`}>
+            <DevSWUnregister />
             <PageLoadingProgressBar />
 
             <Providers>

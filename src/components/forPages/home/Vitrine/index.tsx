@@ -102,46 +102,247 @@ const Vitrine: FC<TVitrineProps> = ({ title, sortBy, order, buttonHref, productS
    }, [products, isLoading]);
 
    return (
-      <Section ref={sectionRef} parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
-         <ScrollById id={id} />
+      <>
+         <Section ref={sectionRef} parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
+            <ScrollById id={id} />
 
-         <div ref={titleRef}>
-            <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
-               <span className="text-support">FEATURED</span> PRODUCTS
-            </h2>
-         </div>
-
-         {isLoading || isError ? (
-            //  Skeleton loading
-            <div ref={productsRef} className="vitrineProductsSkeleton">
-               {Array(productShowCount)
-                  .fill(0)
-                  .map((_, index) => (
-                     <ProductCardSkeleton key={index} />
-                  ))}
+            <div ref={titleRef}>
+               <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
+                  <span className="text-support">FEATURED</span> PRODUCTS
+               </h2>
             </div>
-         ) : (
-            <div ref={productsRef} className="w-full">
-               <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
-                  {products?.map((item: IProducts) => (
-                     <SwiperSlide key={item.id} className="w-fit">
-                        <ProductCard {...item} />
-                     </SwiperSlide>
-                  ))}
-               </Swiper>
-            </div>
-         )}
 
-         <div ref={buttonRef}>
-            <Link href={buttonHref} className="inline-block max-xl:w-full">
-               <button className="group relative inline-flex items-center gap-2 px-2 py-2 text-lg font-semibold text-support transition-colors hover:text-support/90">
-                  <span>View All</span>
-                  <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
-                  <span className="pointer-events-none absolute left-0 -bottom-1 h-[3px] w-0 bg-support transition-[width] duration-300 ease-out group-hover:w-full" />
-               </button>
-            </Link>
-         </div>
-      </Section>
+            {isLoading || isError ? (
+               //  Skeleton loading
+               <div ref={productsRef} className="vitrineProductsSkeleton">
+                  {Array(productShowCount)
+                     .fill(0)
+                     .map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                     ))}
+               </div>
+            ) : (
+               <div ref={productsRef} className="w-full">
+                  <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
+                     {products?.map((item: IProducts) => (
+                        <SwiperSlide key={item.id} className="w-fit">
+                           <ProductCard {...item} />
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+               </div>
+            )}
+
+            <div ref={buttonRef}>
+               <Link href={buttonHref} className="inline-block max-xl:w-full">
+                  <button className="group relative inline-flex items-center gap-2 px-2 py-2 font-semibold text-support text-p-lg link">
+                     <span className="mask">
+                        <div className="link-container">
+                           <span className="link-title1 title">View All</span>
+                           <span className="link-title2 title">View All</span>
+                        </div>
+                     </span>
+                     <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                  </button>
+               </Link>
+            </div>
+         </Section>
+
+         {/* Islamic Art */}
+         <Section parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
+            <div>
+               <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
+                  <span className="text-support">ISLAMIC</span> ART
+               </h2>
+            </div>
+
+            {isLoading || isError ? (
+               <div className="vitrineProductsSkeleton">
+                  {Array(productShowCount)
+                     .fill(0)
+                     .map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                     ))}
+               </div>
+            ) : (
+               <div className="w-full">
+                  <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
+                     {products?.map((item: IProducts) => (
+                        <SwiperSlide key={item.id} className="w-fit">
+                           <ProductCard {...item} />
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+               </div>
+            )}
+
+            <div>
+               <Link href={buttonHref} className="inline-block max-xl:w-full">
+                  <button className="group relative inline-flex items-center gap-2 px-2 py-2 font-semibold text-support text-p-lg link">
+                     <span className="mask">
+                        <div className="link-container">
+                           <span className="link-title1 title">View All</span>
+                           <span className="link-title2 title">View All</span>
+                        </div>
+                     </span>
+                     <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                  </button>
+               </Link>
+            </div>
+         </Section>
+
+         {/* Info Break - Image + Text */}
+         <Section parentClassName="my-16" sectionClassName="px-0" fluid>
+            <div className="grid grid-cols-1 xl:grid-cols-[520px_1fr] items-stretch">
+               {/* Text panel */}
+               <div className="bg-secondary text-primary px-6 py-10 xl:px-12 xl:py-16">
+                  <h3 className="text-h3-sm xl:text-h3 font-heading uppercase">We are your team</h3>
+                  <p className="mt-6 text-p opacity-90">
+                     If you are passionate about interior design, home décor or a company in the landscape or interior
+                     design industry, we have the skills and creativity to design, manufacture and bring your envisioned
+                     products to life.
+                  </p>
+                  <p className="mt-6 text-p opacity-90">
+                     Worldwide shipping available on all our products.
+                  </p>
+               </div>
+               {/* Image side */}
+               <div
+                  className="min-h-[320px] xl:min-h-[520px] bg-cover bg-center"
+                  style={{ backgroundImage: "url('/img/banner/hero4.png')" }}
+               />
+            </div>
+         </Section>
+
+         {/* Outdoor */}
+         <Section parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
+            <div>
+               <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
+                  <span className="text-support">OUTDOOR</span>
+               </h2>
+            </div>
+
+            {isLoading || isError ? (
+               <div className="vitrineProductsSkeleton">
+                  {Array(productShowCount)
+                     .fill(0)
+                     .map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                     ))}
+               </div>
+            ) : (
+               <div className="w-full">
+                  <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
+                     {products?.map((item: IProducts) => (
+                        <SwiperSlide key={item.id} className="w-fit">
+                           <ProductCard {...item} />
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+               </div>
+            )}
+
+            <div>
+               <Link href={buttonHref} className="inline-block max-xl:w-full">
+                  <button className="group relative inline-flex items-center gap-2 px-2 py-2 font-semibold text-support text-p-lg link">
+                     <span className="mask">
+                        <div className="link-container">
+                           <span className="link-title1 title">View All</span>
+                           <span className="link-title2 title">View All</span>
+                        </div>
+                     </span>
+                     <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                  </button>
+               </Link>
+            </div>
+         </Section>
+
+         {/* Furniture */}
+         <Section parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
+            <div>
+               <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
+                  <span className="text-support">FURNITURE</span>
+               </h2>
+            </div>
+
+            {isLoading || isError ? (
+               <div className="vitrineProductsSkeleton">
+                  {Array(productShowCount)
+                     .fill(0)
+                     .map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                     ))}
+               </div>
+            ) : (
+               <div className="w-full">
+                  <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
+                     {products?.map((item: IProducts) => (
+                        <SwiperSlide key={item.id} className="w-fit">
+                           <ProductCard {...item} />
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+               </div>
+            )}
+
+            <div>
+               <Link href={buttonHref} className="inline-block max-xl:w-full">
+                  <button className="group relative inline-flex items-center gap-2 px-2 py-2 font-semibold text-support text-p-lg link">
+                     <span className="mask">
+                        <div className="link-container">
+                           <span className="link-title1 title">View All</span>
+                           <span className="link-title2 title">View All</span>
+                        </div>
+                     </span>
+                     <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                  </button>
+               </Link>
+            </div>
+         </Section>
+
+         {/* Automotive Products */}
+         <Section parentClassName="my-16" sectionClassName="flex flex-col items-center gap-14">
+            <div>
+               <h2 className="text-center text-h2-sm xl:text-h2 font-heading">
+                  <span className="text-support">AUTOMOTIVE</span> PRODUCTS
+               </h2>
+            </div>
+
+            {isLoading || isError ? (
+               <div className="vitrineProductsSkeleton">
+                  {Array(productShowCount)
+                     .fill(0)
+                     .map((_, index) => (
+                        <ProductCardSkeleton key={index} />
+                     ))}
+               </div>
+            ) : (
+               <div className="w-full">
+                  <Swiper spaceBetween={15} slidesPerView={"auto"} className="w-full">
+                     {products?.map((item: IProducts) => (
+                        <SwiperSlide key={item.id} className="w-fit">
+                           <ProductCard {...item} />
+                        </SwiperSlide>
+                     ))}
+                  </Swiper>
+               </div>
+            )}
+
+            <div>
+               <Link href={buttonHref} className="inline-block max-xl:w-full">
+                  <button className="group relative inline-flex items-center gap-2 px-2 py-2 font-semibold text-support text-p-lg link">
+                     <span className="mask">
+                        <div className="link-container">
+                           <span className="link-title1 title">View All</span>
+                           <span className="link-title2 title">View All</span>
+                        </div>
+                     </span>
+                     <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                  </button>
+               </Link>
+            </div>
+         </Section>
+      </>
    );
 };
 

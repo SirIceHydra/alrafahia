@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { HeroSection, Vitrine, Gallery, CustomersComment } from "@/components";
+import { HeroSection, Vitrine, Gallery, CustomersComment, VideoSection } from "@/components";
 import ShippingCallout from "./ShippingCallout";
 import CustomDevelopment from "./CustomDevelopment";
 
@@ -19,6 +19,7 @@ const HomeComponents: FC = (): JSX.Element => {
             order="descending"
             buttonHref="/products"
          />
+         <VideoSection />
          <CustomersComment />
       </>
    );

@@ -32,6 +32,7 @@ export { default as HeroSection } from "./forPages/home/HeroSection";
 export { default as Brands } from "./forPages/home/Brands";
 export { default as CustomDevelopment } from "./forPages/home/CustomDevelopment";
 export { default as Vitrine } from "./forPages/home/Vitrine";
+export { default as VideoSection } from "./forPages/home/VideoSection";
 export { default as Gallery } from "./forPages/home/Gallery";
 export { default as CustomersComment } from "./forPages/home/CustomersComment";
 export { default as CustomerCommentCard } from "./forPages/home/CustomersComment/CustomerCommentCard";
